@@ -31,7 +31,7 @@ export default function ChoreRow({ chore, onComplete, onUndo }: ChoreRowProps) {
 
         {/* Star swimlane */}
         <div className="flex items-center gap-1 mt-2 min-h-[28px] flex-wrap">
-          {Array.from({ length: chore.completions }).map((_, i) => (
+          {Array.from({ length: Math.abs(chore.points) * chore.completions }).map((_, i) => (
             <img
               key={i}
               src={starIcon}
