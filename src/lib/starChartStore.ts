@@ -23,7 +23,7 @@ const DEFAULT_CHORES: Chore[] = [
   { id: "5", label: "Fight with my sister", points: -1, completions: 0 },
 ];
 
-function getWeekStart(): string {
+export function getWeekStart(): string {
   return startOfWeek(new Date(), { weekStartsOn: 1 }).toISOString();
 }
 
