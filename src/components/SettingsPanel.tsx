@@ -1,4 +1,4 @@
-import { StarChartData, Chore } from "@/lib/starChartStore";
+import { StarChartData, Chore, getWeekStart } from "@/lib/starChartStore";
 import { X, Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
 
@@ -109,6 +109,25 @@ export default function SettingsPanel({ data, onSave, onClose }: SettingsPanelPr
             className="w-full py-4 rounded-xl bg-primary text-primary-foreground font-display text-2xl tracking-wider hover:scale-[1.02] active:scale-[0.98] transition-transform neon-border"
           >
             SAVE SETTINGS
+          </button>
+
+          <button
+            onClick={() => {
+              if (window.confirm("Reset all stars and start fresh?")) {
+                onSave({
+                  ...data,
+                  childName,
+                  weeklyTarget: target,
+                  chores: chores.map((c) => ({ ...c, completions: 0 })),
+                  weekStart: getWeekStart(),
+                  goalReached: false,
+                });
+                onClose();
+              }
+            }}
+            className="w-full py-3 rounded-xl bg-destructive/20 text-destructive font-display text-xl tracking-wider hover:bg-destructive/30 transition-colors"
+          >
+            🔄 RESET WEEK
           </button>
         </div>
       </div>

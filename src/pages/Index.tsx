@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
-import { Settings } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Settings, Home } from "lucide-react";
 import { loadData, saveData, getTotalPoints, getWeekRange, StarChartData } from "@/lib/starChartStore";
 import heroImage from "@/assets/hero-demon-hunter.png";
 import ChoreRow from "@/components/ChoreRow";
@@ -8,6 +9,7 @@ import CelebrationScreen from "@/components/CelebrationScreen";
 import SettingsPanel from "@/components/SettingsPanel";
 
 export default function Index() {
+  const navigate = useNavigate();
   const [data, setData] = useState<StarChartData>(loadData);
   const [showSettings, setShowSettings] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
@@ -65,12 +67,20 @@ export default function Index() {
               </p>
             </div>
           </div>
-          <button
-            onClick={() => setShowSettings(true)}
-            className="p-3 rounded-full bg-card hover:bg-muted transition-colors neon-border mt-1"
-          >
-            <Settings className="w-6 h-6 text-foreground" />
-          </button>
+          <div className="flex items-center gap-2 mt-1">
+            <button
+              onClick={() => navigate("/")}
+              className="p-3 rounded-full bg-card hover:bg-muted transition-colors neon-border"
+            >
+              <Home className="w-6 h-6 text-foreground" />
+            </button>
+            <button
+              onClick={() => setShowSettings(true)}
+              className="p-3 rounded-full bg-card hover:bg-muted transition-colors neon-border"
+            >
+              <Settings className="w-6 h-6 text-foreground" />
+            </button>
+          </div>
         </div>
       </div>
 
