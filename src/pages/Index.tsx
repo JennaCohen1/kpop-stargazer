@@ -82,7 +82,7 @@ export default function Index() {
       {/* Points Tracker */}
       <div className="max-w-xl mx-auto px-4 mt-6">
         <PointsTracker current={totalPoints} target={data.weeklyTarget} />
-        <p className="font-nunito text-secondary mt-3 text-center font-bold text-lg py-[3px]">
+        <p className="font-nunito text-secondary mt-5 mb-2 text-center font-bold text-lg py-[3px]">
           {weekRange.start} – {weekRange.end}
         </p>
         <div className="flex items-center justify-center gap-2 mt-6">
