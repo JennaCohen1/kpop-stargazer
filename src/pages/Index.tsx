@@ -64,20 +64,6 @@ export default function Index() {
               </h1>
             </div>
           </div>
-          <div className="flex items-center gap-2 mt-1">
-            <button
-              onClick={() => navigate("/")}
-              className="p-3 rounded-full bg-card hover:bg-muted transition-colors neon-border"
-            >
-              <Home className="w-6 h-6 text-foreground" />
-            </button>
-            <button
-              onClick={() => setShowSettings(true)}
-              className="p-3 rounded-full bg-card hover:bg-muted transition-colors neon-border"
-            >
-              <Settings className="w-6 h-6 text-foreground" />
-            </button>
-          </div>
         </div>
       </div>
 
