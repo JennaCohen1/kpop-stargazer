@@ -28,7 +28,7 @@ export default function Splash() {
           STAR CHART
         </h1>
         <p className="font-nunito text-xl text-muted-foreground font-bold animate-pulse">
-          Tap anywhere to begin ⚔️
+          Tap anywhere to begin ⭐
         </p>
       </div>
     </div>

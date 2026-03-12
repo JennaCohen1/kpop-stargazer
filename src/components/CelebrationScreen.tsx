@@ -38,7 +38,7 @@ export default function CelebrationScreen({ childName, onDismiss }: CelebrationS
         {childName.toUpperCase()} ACHIEVED THE WEEKLY GOAL!
       </h2>
       <p className="font-display text-2xl text-muted-foreground tracking-wider">
-        THE HON MOON IS SEALED! ⚔️🌙
+        THE HON MOON IS SEALED! ⭐🌙
       </p>
 
       <button className="mt-8 px-8 py-3 rounded-full bg-primary font-display text-xl text-primary-foreground tracking-wider hover:scale-105 active:scale-95 transition-transform neon-border">
