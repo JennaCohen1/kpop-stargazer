@@ -54,7 +54,7 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-background pb-8">
       {/* Header */}
-      <div className="relative px-4 pt-6 pb-4">
+      <div className="relative px-4 pt-6 pb-1">
         <div className="flex items-start justify-between max-w-xl mx-auto">
           <div className="flex items-center gap-4">
             <img src={heroImage} alt="K-pop demon hunter" className="w-20 h-20 object-contain" />
