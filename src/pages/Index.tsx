@@ -85,7 +85,7 @@ export default function Index() {
         <p className="font-nunito text-secondary font-bold text-sm mt-3 text-center">
           {weekRange.start} – {weekRange.end}
         </p>
-        <div className="flex items-center justify-center gap-2 mt-3">
+        <div className="flex items-center justify-center gap-2 mt-6">
           <button
             onClick={() => navigate("/")}
             className="p-3 rounded-full bg-card hover:bg-muted transition-colors neon-border"
