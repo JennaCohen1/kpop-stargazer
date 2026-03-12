@@ -33,8 +33,8 @@ export default function Index() {
     setData((prev) => ({
       ...prev,
       chores: prev.chores.map((c) =>
-        c.id === id ? { ...c, completions: c.completions + 1 } : c
-      ),
+      c.id === id ? { ...c, completions: c.completions + 1 } : c
+      )
     }));
   }, []);
 
@@ -42,8 +42,8 @@ export default function Index() {
     setData((prev) => ({
       ...prev,
       chores: prev.chores.map((c) =>
-        c.id === id ? { ...c, completions: Math.max(0, c.completions - 1) } : c
-      ),
+      c.id === id ? { ...c, completions: Math.max(0, c.completions - 1) } : c
+      )
     }));
   }, []);
 
@@ -59,7 +59,7 @@ export default function Index() {
           <div className="flex items-center gap-4">
             <img src={heroImage} alt="K-pop demon hunter" className="w-20 h-20 object-contain" />
             <div>
-              <h1 className="font-display text-4xl text-primary text-glow-magenta tracking-wide leading-tight">
+              <h1 className="font-display text-primary text-glow-magenta tracking-wide leading-tight text-center text-5xl">
                 {data.childName}'s Star Chart
               </h1>
             </div>
@@ -69,54 +69,54 @@ export default function Index() {
 
       {/* Chores */}
       <div className="max-w-xl mx-auto px-4 space-y-3">
-        {data.chores.map((chore) => (
-          <ChoreRow
-            key={chore.id}
-            chore={chore}
-            onComplete={handleComplete}
-            onUndo={handleUndo}
-          />
-        ))}
+        {data.chores.map((chore) =>
+        <ChoreRow
+          key={chore.id}
+          chore={chore}
+          onComplete={handleComplete}
+          onUndo={handleUndo} />
+
+        )}
       </div>
 
       {/* Points Tracker */}
       <div className="max-w-xl mx-auto px-4 mt-6">
         <PointsTracker current={totalPoints} target={data.weeklyTarget} />
-        <p className="font-nunito text-secondary font-bold text-sm mt-3 text-center">
+        <p className="font-nunito text-secondary mt-3 text-center font-bold text-lg py-[3px]">
           {weekRange.start} – {weekRange.end}
         </p>
         <div className="flex items-center justify-center gap-2 mt-6">
           <button
             onClick={() => navigate("/")}
-            className="p-3 rounded-full bg-card hover:bg-muted transition-colors neon-border"
-          >
+            className="p-3 rounded-full bg-card hover:bg-muted transition-colors neon-border">
+            
             <Home className="w-6 h-6 text-foreground" />
           </button>
           <button
             onClick={() => setShowSettings(true)}
-            className="p-3 rounded-full bg-card hover:bg-muted transition-colors neon-border"
-          >
+            className="p-3 rounded-full bg-card hover:bg-muted transition-colors neon-border">
+            
             <Settings className="w-6 h-6 text-foreground" />
           </button>
         </div>
       </div>
 
       {/* Celebration */}
-      {showCelebration && (
-        <CelebrationScreen
-          childName={data.childName}
-          onDismiss={() => setShowCelebration(false)}
-        />
-      )}
+      {showCelebration &&
+      <CelebrationScreen
+        childName={data.childName}
+        onDismiss={() => setShowCelebration(false)} />
+
+      }
 
       {/* Settings */}
-      {showSettings && (
-        <SettingsPanel
-          data={data}
-          onSave={handleSettingsSave}
-          onClose={() => setShowSettings(false)}
-        />
-      )}
-    </div>
-  );
+      {showSettings &&
+      <SettingsPanel
+        data={data}
+        onSave={handleSettingsSave}
+        onClose={() => setShowSettings(false)} />
+
+      }
+    </div>);
+
 }
