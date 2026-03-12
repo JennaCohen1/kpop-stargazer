@@ -1,4 +1,4 @@
-import { StarChartData, Chore } from "@/lib/starChartStore";
+import { StarChartData, Chore, getWeekStart } from "@/lib/starChartStore";
 import { X, Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
 

@@ -9,6 +9,7 @@ import CelebrationScreen from "@/components/CelebrationScreen";
 import SettingsPanel from "@/components/SettingsPanel";
 
 export default function Index() {
+  const navigate = useNavigate();
   const [data, setData] = useState<StarChartData>(loadData);
   const [showSettings, setShowSettings] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
