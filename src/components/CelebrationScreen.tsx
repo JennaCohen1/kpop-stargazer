@@ -7,10 +7,7 @@ interface CelebrationScreenProps {
 
 export default function CelebrationScreen({ childName, onDismiss }: CelebrationScreenProps) {
   return (
-    <div
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background/95 backdrop-blur-sm"
-      onClick={onDismiss}
-    >
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background/95 backdrop-blur-sm overflow-auto py-8">
       {/* Confetti particles */}
       {Array.from({ length: 20 }).map((_, i) => (
         <div
@@ -25,23 +22,33 @@ export default function CelebrationScreen({ childName, onDismiss }: CelebrationS
         />
       ))}
 
-      <img
-        src={celebrationScene}
-        alt="K-pop demon hunters sealing the moon"
-        className="w-80 max-w-[90vw] mb-8 celebration-glow rounded-2xl"
-      />
+      {/* YouTube Video */}
+      <div className="w-[320px] md:w-[400px] max-w-[90vw] aspect-[9/16] mb-6 rounded-2xl overflow-hidden celebration-glow">
+        <iframe
+          width="100%"
+          height="100%"
+          src="https://www.youtube.com/embed/8p7fJfXRMlQ?autoplay=1&loop=1&playlist=8p7fJfXRMlQ"
+          title="Celebration video"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
 
-      <h1 className="font-display text-5xl md:text-6xl text-center text-primary text-glow-magenta mb-4 px-4">
+      <h1 className="font-display text-4xl md:text-6xl text-center text-primary text-glow-magenta mb-3 px-4">
         🎉 CONGRATULATIONS 🎉
       </h1>
-      <h2 className="font-display text-4xl md:text-5xl text-center text-secondary text-glow-cyan mb-6 px-4">
+      <h2 className="font-display text-3xl md:text-5xl text-center text-secondary text-glow-cyan mb-4 px-4">
         {childName.toUpperCase()} ACHIEVED THE WEEKLY GOAL!
       </h2>
-      <p className="font-display text-2xl text-muted-foreground tracking-wider">
+      <p className="font-display text-xl md:text-2xl text-muted-foreground tracking-wider">
         THE HON MOON IS SEALED! ⭐🌙
       </p>
 
-      <button className="mt-8 px-8 py-3 rounded-full bg-primary font-display text-xl text-primary-foreground tracking-wider hover:scale-105 active:scale-95 transition-transform neon-border">
+      <button
+        onClick={onDismiss}
+        className="mt-6 px-8 py-3 rounded-full bg-primary font-display text-xl text-primary-foreground tracking-wider hover:scale-105 active:scale-95 transition-transform neon-border"
+      >
         TAP TO CONTINUE
       </button>
     </div>
