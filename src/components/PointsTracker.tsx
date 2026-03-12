@@ -10,7 +10,7 @@ export default function PointsTracker({ current, target }: PointsTrackerProps) {
     <div className="rounded-xl bg-card p-5 neon-border">
       <div className="flex items-center justify-between mb-3">
         <span className="font-display text-2xl tracking-wide text-foreground text-glow-cyan">
-          ⚔️ DEMON POWER
+          ⭐ DEMON POWER
         </span>
         <span className="font-display text-3xl text-primary text-glow-magenta">
           {current} / {target}
