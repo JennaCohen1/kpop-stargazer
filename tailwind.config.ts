@@ -12,8 +12,15 @@ export default {
         "2xl": "1400px",
       },
     },
+    fontFamily: {
+      display: ['Bangers', 'cursive'],
+      nunito: ['Nunito', 'sans-serif'],
+    },
     extend: {
       colors: {
+        'neon-cyan': 'hsl(var(--neon-cyan))',
+        'neon-magenta': 'hsl(var(--neon-magenta))',
+        'neon-purple': 'hsl(var(--neon-purple))',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
