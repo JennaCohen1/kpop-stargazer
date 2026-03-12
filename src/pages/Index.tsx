@@ -96,6 +96,9 @@ export default function Index() {
       {/* Points Tracker */}
       <div className="max-w-xl mx-auto px-4 mt-6">
         <PointsTracker current={totalPoints} target={data.weeklyTarget} />
+        <p className="font-nunito text-secondary font-bold text-sm mt-3 text-center">
+          {weekRange.start} – {weekRange.end}
+        </p>
       </div>
 
       {/* Celebration */}
