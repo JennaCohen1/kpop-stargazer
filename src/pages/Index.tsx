@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
-import { Settings } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Settings, Home } from "lucide-react";
 import { loadData, saveData, getTotalPoints, getWeekRange, StarChartData } from "@/lib/starChartStore";
 import heroImage from "@/assets/hero-demon-hunter.png";
 import ChoreRow from "@/components/ChoreRow";
