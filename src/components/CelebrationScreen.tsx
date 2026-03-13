@@ -28,7 +28,6 @@ export default function CelebrationScreen({ childName, onDismiss }: CelebrationS
           src="/kpop.mp4"
           autoPlay
           loop
-          muted
           playsInline
           className="w-full h-full object-cover"
         />
