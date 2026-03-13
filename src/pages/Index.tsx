@@ -73,6 +73,11 @@ export default function Index() {
               className="p-2 rounded-full bg-card hover:bg-muted transition-colors neon-border">
               <Settings className="w-5 h-5 text-foreground" />
             </button>
+            <button
+              onClick={signOut}
+              className="p-2 rounded-full bg-card hover:bg-muted transition-colors neon-border">
+              <LogOut className="w-5 h-5 text-foreground" />
+            </button>
           </div>
         </div>
       </div>
