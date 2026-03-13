@@ -62,6 +62,18 @@ export default function Index() {
               {data.childName}'s Star Chart
             </h1>
           </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => navigate("/")}
+              className="p-2 md:p-3 rounded-full bg-card hover:bg-muted transition-colors neon-border">
+              <Home className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
+            </button>
+            <button
+              onClick={() => setShowSettings(true)}
+              className="p-2 md:p-3 rounded-full bg-card hover:bg-muted transition-colors neon-border">
+              <Settings className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
+            </button>
+          </div>
         </div>
       </div>
 
