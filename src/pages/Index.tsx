@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { Settings, Home } from "lucide-react";
+import { Settings, Home, LogOut } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
 import { loadData, saveData, getTotalPoints, getWeekRange, StarChartData } from "@/lib/starChartStore";
 import heroImage from "@/assets/hero-demon-hunter.png";
 import ChoreRow from "@/components/ChoreRow";
@@ -10,6 +11,7 @@ import SettingsPanel from "@/components/SettingsPanel";
 
 export default function Index() {
   const navigate = useNavigate();
+  const { signOut } = useAuth();
   const [data, setData] = useState<StarChartData>(loadData);
   const [showSettings, setShowSettings] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
@@ -70,6 +72,11 @@ export default function Index() {
               onClick={() => setShowSettings(true)}
               className="p-2 rounded-full bg-card hover:bg-muted transition-colors neon-border">
               <Settings className="w-5 h-5 text-foreground" />
+            </button>
+            <button
+              onClick={signOut}
+              className="p-2 rounded-full bg-card hover:bg-muted transition-colors neon-border">
+              <LogOut className="w-5 h-5 text-foreground" />
             </button>
           </div>
         </div>
