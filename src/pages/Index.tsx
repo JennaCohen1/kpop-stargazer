@@ -62,6 +62,18 @@ export default function Index() {
               {data.childName}'s Star Chart
             </h1>
           </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => navigate("/")}
+              className="p-2 md:p-3 rounded-full bg-card hover:bg-muted transition-colors neon-border">
+              <Home className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
+            </button>
+            <button
+              onClick={() => setShowSettings(true)}
+              className="p-2 md:p-3 rounded-full bg-card hover:bg-muted transition-colors neon-border">
+              <Settings className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -79,23 +91,9 @@ export default function Index() {
       {/* Points Tracker & Nav */}
       <div className="max-w-2xl mx-auto px-4 md:px-8 mt-4 md:mt-2 md:pb-4 w-full">
         <PointsTracker current={totalPoints} target={data.weeklyTarget} />
-        <div className="flex items-center justify-center gap-4 mt-3">
-          <p className="font-nunito text-secondary font-bold text-base md:text-lg">
-            {weekRange.start} – {weekRange.end}
-          </p>
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => navigate("/")}
-              className="p-2 md:p-3 rounded-full bg-card hover:bg-muted transition-colors neon-border">
-              <Home className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
-            </button>
-            <button
-              onClick={() => setShowSettings(true)}
-              className="p-2 md:p-3 rounded-full bg-card hover:bg-muted transition-colors neon-border">
-              <Settings className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
-            </button>
-          </div>
-        </div>
+        <p className="font-nunito text-secondary font-bold text-base md:text-lg text-center mt-3">
+          {weekRange.start} – {weekRange.end}
+        </p>
       </div>
 
       {/* Celebration */}
