@@ -54,21 +54,21 @@ export default function Index() {
   return (
     <div className="min-h-screen md:h-screen bg-background pb-6 md:pb-0 md:flex md:flex-col">
       {/* Header */}
-      <div className="relative px-4 md:px-8 pt-4 md:pt-3 pb-1 md:pb-0">
-        <div className="flex items-center gap-3 md:gap-4 max-w-2xl mx-auto">
+      <div className="relative pt-4 md:pt-3 pb-1 md:pb-0">
+        <div className="flex items-center gap-2 md:gap-3 max-w-2xl mx-auto px-4 md:px-8">
           <button
             onClick={() => navigate("/")}
-            className="p-2 md:p-3 rounded-full bg-card hover:bg-muted transition-colors neon-border">
-            <Home className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
+            className="shrink-0 p-2 rounded-full bg-card hover:bg-muted transition-colors neon-border">
+            <Home className="w-5 h-5 text-foreground" />
           </button>
-          <img src={heroImage} alt="K-pop demon hunter" className="w-16 h-16 md:w-20 md:h-20 object-contain" />
-          <h1 className="font-display text-primary text-glow-magenta tracking-wide leading-tight text-3xl md:text-4xl lg:text-5xl">
+          <img src={heroImage} alt="K-pop demon hunter" className="shrink-0 w-14 h-14 md:w-18 md:h-18 object-contain" />
+          <h1 className="font-display text-primary text-glow-magenta tracking-wide leading-tight text-2xl md:text-3xl lg:text-4xl min-w-0 truncate">
             {data.childName}'s Star Chart
           </h1>
           <button
             onClick={() => setShowSettings(true)}
-            className="p-2 md:p-3 rounded-full bg-card hover:bg-muted transition-colors neon-border">
-            <Settings className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
+            className="shrink-0 p-2 rounded-full bg-card hover:bg-muted transition-colors neon-border ml-auto">
+            <Settings className="w-5 h-5 text-foreground" />
           </button>
         </div>
       </div>
