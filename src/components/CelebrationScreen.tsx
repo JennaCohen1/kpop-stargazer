@@ -24,14 +24,13 @@ export default function CelebrationScreen({ childName, onDismiss }: CelebrationS
 
       {/* YouTube Video */}
       <div className="w-[320px] md:w-[400px] max-w-[90vw] aspect-[9/16] mb-6 rounded-2xl overflow-hidden celebration-glow">
-        <iframe
-          width="100%"
-          height="100%"
-          src="https://www.youtube.com/embed/8p7fJfXRMlQ?autoplay=1&loop=1&playlist=8p7fJfXRMlQ"
-          title="Celebration video"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
+        <video
+          src="/kpop.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
         />
       </div>
 
