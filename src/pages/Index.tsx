@@ -55,13 +55,7 @@ export default function Index() {
     <div className="min-h-screen md:h-screen bg-background pb-6 md:pb-0 md:flex md:flex-col">
       {/* Header */}
       <div className="relative px-4 md:px-8 pt-4 md:pt-3 pb-1 md:pb-0">
-        <div className="flex items-center justify-between max-w-2xl mx-auto">
-          <div className="flex items-center gap-3 md:gap-4">
-            <img src={heroImage} alt="K-pop demon hunter" className="w-16 h-16 md:w-20 md:h-20 object-contain" />
-            <h1 className="font-display text-primary text-glow-magenta tracking-wide leading-tight text-3xl md:text-4xl lg:text-5xl">
-              {data.childName}'s Star Chart
-            </h1>
-          </div>
+        <div className="flex items-center gap-3 md:gap-4 max-w-2xl mx-auto">
           <div className="flex items-center gap-2">
             <button
               onClick={() => navigate("/")}
@@ -74,6 +68,10 @@ export default function Index() {
               <Settings className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
             </button>
           </div>
+          <img src={heroImage} alt="K-pop demon hunter" className="w-16 h-16 md:w-20 md:h-20 object-contain" />
+          <h1 className="font-display text-primary text-glow-magenta tracking-wide leading-tight text-3xl md:text-4xl lg:text-5xl">
+            {data.childName}'s Star Chart
+          </h1>
         </div>
       </div>
 
