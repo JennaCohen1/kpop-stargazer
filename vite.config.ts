@@ -24,8 +24,8 @@ export default defineConfig(({ mode }) => ({
         short_name: "Star Chart",
         start_url: "/",
         description: "Weekly interactive star chart for kids",
-        theme_color: "#1a0a2e",
-        background_color: "#1a0a2e",
+        theme_color: "#0f0a1e",
+        background_color: "#0f0a1e",
         display: "standalone",
         orientation: "portrait",
         icons: [
