@@ -29,9 +29,9 @@ export default function Login() {
   }
 
   const getAuthEmailRedirectUrl = () => {
-    // Preview URLs can be temporary/private; use the published app URL for email links.
-    if (window.location.hostname.includes("lovableproject.com")) {
-      return "https://kpop-stargazer.lovable.app/login";
+    // Always redirect to the production Vercel app
+    if (window.location.hostname.includes("lovableproject.com") || window.location.hostname.includes("lovable.app")) {
+      return "https://kpop-star-chart.vercel.app/login";
     }
 
     return `${window.location.origin}/login`;
