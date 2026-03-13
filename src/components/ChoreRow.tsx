@@ -11,7 +11,7 @@ export default function ChoreRow({ chore, onComplete, onUndo }: ChoreRowProps) {
   const isNegative = chore.points < 0;
 
   return (
-    <div className="flex items-center gap-3 rounded-xl bg-card p-4 neon-border transition-all hover:scale-[1.01]">
+    <div className="flex items-center gap-3 rounded-xl bg-card p-3 md:p-3 neon-border transition-all hover:scale-[1.01]">
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2">
           <span className="font-nunito font-bold text-lg text-foreground truncate">

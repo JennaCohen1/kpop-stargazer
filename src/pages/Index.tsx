@@ -52,23 +52,21 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background pb-8">
+    <div className="min-h-screen md:h-screen bg-background pb-6 md:pb-0 md:flex md:flex-col">
       {/* Header */}
-      <div className="relative px-4 md:px-8 pt-6 pb-1">
-        <div className="flex items-start justify-between max-w-2xl mx-auto">
-          <div className="flex items-center gap-4 md:gap-6">
-            <img src={heroImage} alt="K-pop demon hunter" className="w-20 h-20 md:w-28 md:h-28 object-contain" />
-            <div>
-              <h1 className="font-display text-primary text-glow-magenta tracking-wide leading-tight text-center text-4xl md:text-5xl lg:text-6xl">
-                {data.childName}'s Star Chart
-              </h1>
-            </div>
+      <div className="relative px-4 md:px-8 pt-4 md:pt-3 pb-1 md:pb-0">
+        <div className="flex items-center justify-between max-w-2xl mx-auto">
+          <div className="flex items-center gap-3 md:gap-4">
+            <img src={heroImage} alt="K-pop demon hunter" className="w-16 h-16 md:w-20 md:h-20 object-contain" />
+            <h1 className="font-display text-primary text-glow-magenta tracking-wide leading-tight text-3xl md:text-4xl lg:text-5xl">
+              {data.childName}'s Star Chart
+            </h1>
           </div>
         </div>
       </div>
 
       {/* Chores */}
-      <div className="max-w-2xl mx-auto px-4 md:px-8 space-y-3 md:space-y-4">
+      <div className="max-w-2xl mx-auto px-4 md:px-8 space-y-2 md:space-y-2 md:flex-1 md:overflow-auto w-full">
         {data.chores.map((chore) =>
         <ChoreRow
           key={chore.id}
@@ -78,23 +76,25 @@ export default function Index() {
         )}
       </div>
 
-      {/* Points Tracker */}
-      <div className="max-w-2xl mx-auto px-4 md:px-8 mt-6 md:mt-8">
+      {/* Points Tracker & Nav */}
+      <div className="max-w-2xl mx-auto px-4 md:px-8 mt-4 md:mt-2 md:pb-4 w-full">
         <PointsTracker current={totalPoints} target={data.weeklyTarget} />
-        <p className="font-nunito text-secondary mt-5 mb-2 text-center font-bold text-lg md:text-xl py-[3px]">
-          {weekRange.start} – {weekRange.end}
-        </p>
-        <div className="flex items-center justify-center gap-2 mt-6">
-          <button
-            onClick={() => navigate("/")}
-            className="p-3 md:p-4 rounded-full bg-card hover:bg-muted transition-colors neon-border">
-            <Home className="w-6 h-6 md:w-7 md:h-7 text-foreground" />
-          </button>
-          <button
-            onClick={() => setShowSettings(true)}
-            className="p-3 md:p-4 rounded-full bg-card hover:bg-muted transition-colors neon-border">
-            <Settings className="w-6 h-6 md:w-7 md:h-7 text-foreground" />
-          </button>
+        <div className="flex items-center justify-center gap-4 mt-3">
+          <p className="font-nunito text-secondary font-bold text-base md:text-lg">
+            {weekRange.start} – {weekRange.end}
+          </p>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => navigate("/")}
+              className="p-2 md:p-3 rounded-full bg-card hover:bg-muted transition-colors neon-border">
+              <Home className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
+            </button>
+            <button
+              onClick={() => setShowSettings(true)}
+              className="p-2 md:p-3 rounded-full bg-card hover:bg-muted transition-colors neon-border">
+              <Settings className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
+            </button>
+          </div>
         </div>
       </div>
 
