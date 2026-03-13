@@ -56,20 +56,22 @@ export default function Index() {
       {/* Header */}
       <div className="relative pt-4 md:pt-3 pb-1 md:pb-0">
         <div className="flex items-center gap-2 md:gap-3 max-w-2xl mx-auto px-4 md:px-8">
-          <button
-            onClick={() => navigate("/")}
-            className="shrink-0 p-2 rounded-full bg-card hover:bg-muted transition-colors neon-border">
-            <Home className="w-5 h-5 text-foreground" />
-          </button>
           <img src={heroImage} alt="K-pop demon hunter" className="shrink-0 w-14 h-14 md:w-18 md:h-18 object-contain" />
           <h1 className="font-display text-primary text-glow-magenta tracking-wide leading-tight text-2xl md:text-3xl lg:text-4xl min-w-0 truncate">
             {data.childName}'s Star Chart
           </h1>
-          <button
-            onClick={() => setShowSettings(true)}
-            className="shrink-0 p-2 rounded-full bg-card hover:bg-muted transition-colors neon-border ml-auto">
-            <Settings className="w-5 h-5 text-foreground" />
-          </button>
+          <div className="flex gap-2 ml-auto shrink-0">
+            <button
+              onClick={() => navigate("/")}
+              className="p-2 rounded-full bg-card hover:bg-muted transition-colors neon-border">
+              <Home className="w-5 h-5 text-foreground" />
+            </button>
+            <button
+              onClick={() => setShowSettings(true)}
+              className="p-2 rounded-full bg-card hover:bg-muted transition-colors neon-border">
+              <Settings className="w-5 h-5 text-foreground" />
+            </button>
+          </div>
         </div>
       </div>
 
