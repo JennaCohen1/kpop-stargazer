@@ -102,6 +102,28 @@ export default function Login() {
             {isSignUp ? "Sign In" : "Sign Up"}
           </button>
         </p>
+
+        {!isSignUp && (
+          <button
+            type="button"
+            onClick={async () => {
+              if (!email) {
+                toast.error("Enter your email first");
+                return;
+              }
+              const { error } = await supabase.auth.resend({
+                type: "signup",
+                email,
+                options: { emailRedirectTo: window.location.origin },
+              });
+              if (error) toast.error(error.message);
+              else toast.success("Confirmation email resent! Check your inbox.");
+            }}
+            className="block mx-auto text-sm text-muted-foreground hover:text-secondary underline font-nunito"
+          >
+            Resend confirmation email
+          </button>
+        )}
       </div>
     </div>
   );
