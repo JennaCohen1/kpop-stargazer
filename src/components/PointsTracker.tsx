@@ -10,7 +10,7 @@ export default function PointsTracker({ current, target }: PointsTrackerProps) {
     <div className="rounded-xl bg-card p-3 md:p-4 neon-border">
       <div className="flex items-center justify-between mb-2">
         <span className="font-display text-xl md:text-2xl tracking-wide text-foreground text-glow-cyan">
-          ⭐ Seal the HON MOON !           
+          ⭐ Seal the HONMOON !           
         </span>
         <span className="font-display text-2xl md:text-3xl text-primary text-glow-magenta">
           {current} / {target}
