@@ -40,7 +40,7 @@ export default function CelebrationScreen({ childName, onDismiss }: CelebrationS
         {childName.toUpperCase()} ACHIEVED THE WEEKLY GOAL!
       </h2>
       <p className="font-display text-xl md:text-2xl text-muted-foreground tracking-wider">
-        THE HON MOON IS SEALED! ⭐🌙
+        THE HONMOON IS SEALED! ⭐🌙
       </p>
 
       <button
