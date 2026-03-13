@@ -20,11 +20,12 @@ export default defineConfig(({ mode }) => ({
       registerType: "autoUpdate",
       includeAssets: ["favicon.ico", "pwa-icon-192.png", "pwa-icon-512.png"],
       manifest: {
-        name: "Star Chart - K-Pop Demon Hunter",
+        name: "K-Pop Star Chart",
         short_name: "Star Chart",
+        start_url: "/",
         description: "Weekly interactive star chart for kids",
-        theme_color: "#1a0a2e",
-        background_color: "#1a0a2e",
+        theme_color: "#0f0a1e",
+        background_color: "#0f0a1e",
         display: "standalone",
         orientation: "portrait",
         icons: [

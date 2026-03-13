@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { Settings, Home, LogOut } from "lucide-react";
-import { useAuth } from "@/hooks/useAuth";
+import { Settings, Home } from "lucide-react";
 import { loadData, saveData, getTotalPoints, getWeekRange, StarChartData } from "@/lib/starChartStore";
 import heroImage from "@/assets/hero-demon-hunter.png";
 import ChoreRow from "@/components/ChoreRow";
@@ -11,19 +10,34 @@ import SettingsPanel from "@/components/SettingsPanel";
 
 export default function Index() {
   const navigate = useNavigate();
-  const { signOut } = useAuth();
-  const [data, setData] = useState<StarChartData>(loadData);
+  const [data, setData] = useState<StarChartData>(() => {
+    const loaded = loadData();
+    // Sync childName from localStorage if set
+    const storedName = localStorage.getItem("childName");
+    if (storedName && storedName !== loaded.childName) {
+      return { ...loaded, childName: storedName };
+    }
+    return loaded;
+  });
   const [showSettings, setShowSettings] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
   const weekRange = getWeekRange();
 
+  // Redirect to name prompt if no name set
+  useEffect(() => {
+    if (!localStorage.getItem("childName")) {
+      navigate("/name", { replace: true });
+    }
+  }, [navigate]);
+
   useEffect(() => {
     saveData(data);
+    // Keep childName in sync
+    localStorage.setItem("childName", data.childName);
   }, [data]);
 
   const totalPoints = getTotalPoints(data.chores);
 
-  // Check goal reached
   useEffect(() => {
     if (totalPoints >= data.weeklyTarget && !data.goalReached) {
       setShowCelebration(true);
@@ -35,8 +49,8 @@ export default function Index() {
     setData((prev) => ({
       ...prev,
       chores: prev.chores.map((c) =>
-      c.id === id ? { ...c, completions: c.completions + 1 } : c
-      )
+        c.id === id ? { ...c, completions: c.completions + 1 } : c
+      ),
     }));
   }, []);
 
@@ -44,8 +58,8 @@ export default function Index() {
     setData((prev) => ({
       ...prev,
       chores: prev.chores.map((c) =>
-      c.id === id ? { ...c, completions: Math.max(0, c.completions - 1) } : c
-      )
+        c.id === id ? { ...c, completions: Math.max(0, c.completions - 1) } : c
+      ),
     }));
   }, []);
 
@@ -73,24 +87,15 @@ export default function Index() {
               className="p-2 rounded-full bg-card hover:bg-muted transition-colors neon-border">
               <Settings className="w-5 h-5 text-foreground" />
             </button>
-            <button
-              onClick={signOut}
-              className="p-2 rounded-full bg-card hover:bg-muted transition-colors neon-border">
-              <LogOut className="w-5 h-5 text-foreground" />
-            </button>
           </div>
         </div>
       </div>
 
       {/* Chores */}
       <div className="max-w-2xl mx-auto px-4 md:px-8 space-y-2 md:space-y-2 md:flex-1 md:overflow-auto w-full">
-        {data.chores.map((chore) =>
-        <ChoreRow
-          key={chore.id}
-          chore={chore}
-          onComplete={handleComplete}
-          onUndo={handleUndo} />
-        )}
+        {data.chores.map((chore) => (
+          <ChoreRow key={chore.id} chore={chore} onComplete={handleComplete} onUndo={handleUndo} />
+        ))}
       </div>
 
       {/* Points Tracker & Nav */}
@@ -101,20 +106,13 @@ export default function Index() {
         </p>
       </div>
 
-      {/* Celebration */}
-      {showCelebration &&
-      <CelebrationScreen
-        childName={data.childName}
-        onDismiss={() => setShowCelebration(false)} />
-      }
+      {showCelebration && (
+        <CelebrationScreen childName={data.childName} onDismiss={() => setShowCelebration(false)} />
+      )}
 
-      {/* Settings */}
-      {showSettings &&
-      <SettingsPanel
-        data={data}
-        onSave={handleSettingsSave}
-        onClose={() => setShowSettings(false)} />
-      }
-    </div>);
-
+      {showSettings && (
+        <SettingsPanel data={data} onSave={handleSettingsSave} onClose={() => setShowSettings(false)} />
+      )}
+    </div>
+  );
 }

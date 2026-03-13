@@ -4,15 +4,19 @@ import splashHero from "@/assets/splash-hero.png";
 export default function Splash() {
   const navigate = useNavigate();
 
+  const handleTap = () => {
+    const name = localStorage.getItem("childName");
+    navigate(name ? "/chart" : "/name");
+  };
+
   return (
     <div
       className="min-h-screen flex flex-col items-center justify-end relative overflow-hidden bg-background"
-      onClick={() => navigate("/chart")}
+      onClick={handleTap}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => e.key === "Enter" && navigate("/chart")}
+      onKeyDown={(e) => e.key === "Enter" && handleTap()}
     >
-      {/* Background image */}
       <div className="absolute inset-0">
         <img
           src={splashHero}
@@ -22,7 +26,6 @@ export default function Splash() {
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
       </div>
 
-      {/* CTA */}
       <div className="relative z-10 text-center pb-16 px-6">
         <h1 className="font-display text-5xl md:text-6xl text-primary text-glow-magenta tracking-wider mb-4">
           STAR CHART
