@@ -123,7 +123,7 @@ export default function Login() {
               const { error } = await supabase.auth.resend({
                 type: "signup",
                 email,
-                options: { emailRedirectTo: window.location.origin },
+                options: { emailRedirectTo: getAuthEmailRedirectUrl() },
               });
               if (error) toast.error(error.message);
               else toast.success("Confirmation email resent! Check your inbox.");
