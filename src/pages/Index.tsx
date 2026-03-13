@@ -11,6 +11,7 @@ import SettingsPanel from "@/components/SettingsPanel";
 
 export default function Index() {
   const navigate = useNavigate();
+  const { signOut } = useAuth();
   const [data, setData] = useState<StarChartData>(loadData);
   const [showSettings, setShowSettings] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
