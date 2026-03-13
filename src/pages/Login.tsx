@@ -28,6 +28,15 @@ export default function Login() {
     return <Navigate to="/chart" replace />;
   }
 
+  const getAuthEmailRedirectUrl = () => {
+    // Preview URLs can be temporary/private; use the published app URL for email links.
+    if (window.location.hostname.includes("lovableproject.com")) {
+      return "https://kpop-stargazer.lovable.app/login";
+    }
+
+    return `${window.location.origin}/login`;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
@@ -37,7 +46,7 @@ export default function Login() {
         const { error } = await supabase.auth.signUp({
           email,
           password,
-          options: { emailRedirectTo: window.location.origin },
+          options: { emailRedirectTo: getAuthEmailRedirectUrl() },
         });
         if (error) throw error;
         toast.success("Check your email to confirm your account!");
@@ -114,7 +123,7 @@ export default function Login() {
               const { error } = await supabase.auth.resend({
                 type: "signup",
                 email,
-                options: { emailRedirectTo: window.location.origin },
+                options: { emailRedirectTo: getAuthEmailRedirectUrl() },
               });
               if (error) toast.error(error.message);
               else toast.success("Confirmation email resent! Check your inbox.");
