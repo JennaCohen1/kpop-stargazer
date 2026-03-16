@@ -8,22 +8,34 @@ interface SettingsPanelProps {
   onClose: () => void;
 }
 
+type EditableChore = Chore & { pointsInput: string };
+
 export default function SettingsPanel({ data, onSave, onClose }: SettingsPanelProps) {
   const [childName, setChildName] = useState(data.childName);
   const [target, setTarget] = useState(data.weeklyTarget);
-  const [chores, setChores] = useState<Chore[]>(data.chores.map((c) => ({ ...c })));
+  const [chores, setChores] = useState<EditableChore[]>(
+    data.chores.map((c) => ({ ...c, pointsInput: String(c.points) }))
+  );
+
+  function normalizeChores(source: EditableChore[]): Chore[] {
+    return source.map(({ pointsInput, ...rest }) => {
+      const parsed = parseInt(pointsInput, 10);
+      const safePoints = Number.isFinite(parsed) ? parsed : 0;
+      return { ...rest, points: safePoints };
+    });
+  }
 
   function handleSave() {
     onSave({
       ...data,
       childName,
       weeklyTarget: target,
-      chores,
+      chores: normalizeChores(chores),
     });
     onClose();
   }
 
-  function updateChore(id: string, field: "label" | "points", value: string | number) {
+  function updateChore(id: string, field: "label" | "pointsInput", value: string) {
     setChores((prev) =>
       prev.map((c) => (c.id === id ? { ...c, [field]: value } : c))
     );
@@ -32,7 +44,13 @@ export default function SettingsPanel({ data, onSave, onClose }: SettingsPanelPr
   function addChore() {
     setChores((prev) => [
       ...prev,
-      { id: Date.now().toString(), label: "New chore", points: 1, completions: 0 },
+      {
+        id: Date.now().toString(),
+        label: "New chore",
+        points: 1,
+        completions: 0,
+        pointsInput: "1",
+      },
     ]);
   }
 
@@ -82,8 +100,8 @@ export default function SettingsPanel({ data, onSave, onClose }: SettingsPanelPr
                   />
                   <input
                     type="number"
-                    value={chore.points}
-                    onChange={(e) => updateChore(chore.id, "points", Number(e.target.value))}
+                    value={chore.pointsInput}
+                    onChange={(e) => updateChore(chore.id, "pointsInput", e.target.value)}
                     className="w-20 px-3 py-2 rounded-lg bg-card text-foreground border border-border focus:outline-none focus:ring-2 focus:ring-primary font-nunito text-center"
                   />
                   <span className="text-muted-foreground text-sm w-8">pts</span>
@@ -118,7 +136,10 @@ export default function SettingsPanel({ data, onSave, onClose }: SettingsPanelPr
                   ...data,
                   childName,
                   weeklyTarget: target,
-                  chores: chores.map((c) => ({ ...c, completions: 0 })),
+                  chores: normalizeChores(chores).map((c) => ({
+                    ...c,
+                    completions: 0,
+                  })),
                   weekStart: getWeekStart(),
                   goalReached: false,
                 });
